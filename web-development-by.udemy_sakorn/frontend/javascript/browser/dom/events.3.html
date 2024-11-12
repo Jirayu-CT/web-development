@@ -1,0 +1,22 @@
+<html lang="en">
+<!--กำหนดที่ Element-->
+<body>
+    <input id="elem" type="button" value="Click me" />
+
+    <script>
+        function handler1() {
+            alert('Thanks!');
+        };
+
+        function handler2() {
+            alert('Thanks again!');
+        }
+                        //function
+        elem.onclick = () => alert("Hello");
+        //id elem.เพิ่มevent
+        elem.addEventListener("click", handler1); // Thanks!
+        elem.addEventListener("click", handler2); // Thanks again!
+    </script>
+</body>
+
+</html>

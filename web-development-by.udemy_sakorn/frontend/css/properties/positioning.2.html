@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        p {
+            padding: 5px;
+        }
+
+        div {
+            background: yellow;
+            border: 1px solid black;
+            margin: 0 20px;
+        }
+
+        div#relative {
+            position: relative;
+            height: 200px;
+        }
+
+        p#bottom-right {
+            margin: 0;
+            background: gold;
+            border: 1px solid crimson;
+            height: 50px;
+            width: 270px;
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='relative'>
+        <p>
+            Relative positioning is a lot like static positioning; elements don't appear to leave the flow of the document.
+        </p>
+        <p id='bottom-right'>
+            This element is positioned to the bottom right of the relatively positioned element.
+        </p>
+    </div>
+</body>
+
+</html>

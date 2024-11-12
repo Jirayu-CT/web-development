@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <script>
+        // alert('test');
+    </script>
+</head>
+<body>
+    <ul>
+        <li>
+            <!--แสดงแค่ alert ไม่ไปลิ้ง และ จะแสดง alert เฉพาะวางใว้ก่อน return-->
+            <a href="http://olanlab.com" 
+                onclick="return false; alert('test');">Link 1 </a>
+        </li>
+        <li>
+            <!--แสดงแค่ alert ไม่ไปลิ้ง และ จะแสดง alert ไม่ว่าจะวางก่อนหรือหลัง-->
+            <a href="http://share.olanlab.com" 
+                onclick="event.preventDefault(); alert('test');">Link 2</a>
+        </li>
+        <li>
+            <!--ปกติ-->
+            <a href="http://school.olanlab.com">Link 3</a>
+        </li>
+    </ul>
+</body>
+
+</html>

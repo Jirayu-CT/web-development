@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        p {
+            padding: 5px;
+            margin-left: 110px;
+        }
+
+        div {
+            position: fixed;
+            background: gold;
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+        }
+
+        div#fixed-top {
+            top: 5px;
+            left: 5px;
+        }
+
+        div#fixed-bottom {
+            bottom: 5px;
+            left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='fixed-top'></div>
+    <div id='fixed-bottom'></div>
+    <p>
+        The concept of fixed positioning is pretty straightforward. Elements with a fixed position stay in place, even when a document
+        is scrolled. Elements with a fixed position are always positioned relative to the browser's viewport, no matter where
+        they appear in a document's structure.
+    </p>
+    <p style="height: 700px;">
+        This element is used to make the document longer, so that scroll bars are invoked.
+    </p>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<html lang="en">
+
+<body class="main page">
+    <script>
+        // add a class
+        document.body.classList.add('article');
+        console.log(document.body.className); // main page article
+
+        // toggle a class
+        document.body.classList.toggle('page');
+        console.log(document.body.className); // main article
+
+        // remove a class
+        document.body.classList.remove('main');
+        console.log(document.body.className); // article
+
+        // toggle a class
+        document.body.classList.toggle('page');
+        console.log(document.body.className); // main article
+
+        console.log(document.body.classList.contains('main'));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<html lang="en">
+
+<body>
+    <ul>
+        <li>The</li>
+        <li>test</li>
+    </ul>
+    <ul>
+        <li>has</li>
+        <li>passed</li>
+    </ul>
+    <script>
+        let elements = document.querySelectorAll('ul > li:last-child');
+        for (let elem of elements) {
+            console.log(elem.innerHTML); // "test", "passed"
+        }
+    </script>
+</body>
+
+</html>

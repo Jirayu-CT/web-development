@@ -1,0 +1,5 @@
+// DELETE MANY ---------------------------------------------
+db.products.deleteMany({ status : "Active" })
+
+// DELETE ONE ---------------------------------------------
+db.products.deleteOne( { status: "Inactive" } )

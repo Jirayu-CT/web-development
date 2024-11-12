@@ -1,0 +1,27 @@
+<html lang="en">
+
+<head>
+    <script>
+        let user3 = {     // an object
+            name: "John",  // by key "name" store value "John"
+            age: 30        // by key "age" store value 30
+        };
+        
+        console.log(user3.name); // John
+        console.log(user3.age); // 30
+        console.log(user3["name"]);
+        console.log(user3["age"]);
+
+        user3.isAdmin = true; //เพิ่ม propotie
+        user3["isAdmin2"] = true;
+        console.log(user3);
+        delete user3.age;
+        console.log(user3);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

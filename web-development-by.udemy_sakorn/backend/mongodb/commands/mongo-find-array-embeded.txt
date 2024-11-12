@@ -1,0 +1,26 @@
+// DATA ------------------------------------------------------------------------------------
+db.products.insertMany( [
+   { name: "journal", instock: [ { warehouse: "A", qty: 5 }, { warehouse: "C", qty: 15 } ] },
+   { name: "notebook", instock: [ { warehouse: "C", qty: 5 } ] },
+   { name: "paper", instock: [ { warehouse: "A", qty: 60 }, { warehouse: "B", qty: 15 } ] },
+   { name: "planner", instock: [ { warehouse: "A", qty: 40 }, { warehouse: "B", qty: 5 } ] },
+   { name: "postcard", instock: [ { warehouse: "B", qty: 15 }, { warehouse: "C", qty: 35 } ] }
+]);
+
+// MATCH
+db.products.find( { "instock": { warehouse: "A", qty: 5 } } )
+// ORDER IS DIFFERENT
+db.products.find( { "instock": { qty: 5, warehouse: "A" } } )
+
+// INDEX
+db.products.find( { 'instock.0.qty': { $lte: 20 } } )
+
+db.products.find( { 'instock.qty': { $lte: 20 } } )
+
+
+// elemMatch is not care ORDER
+db.products.find( { "instock": { $elemMatch: { qty: 5, warehouse: "A" } } } )
+db.products.find( { "instock": { $elemMatch: { qty: { $gt: 10, $lte: 20 } } } } )
+
+db.products.find( { "instock.qty": { $gt: 10,  $lte: 20 } } )
+db.products.find( { "instock.qty": 5, "instock.warehouse": "A" } )

@@ -1,0 +1,21 @@
+<html lang="en">
+<!--จัดการ event โดยใช้ propoty-->
+<body>
+    <input id="elem" type="button" value="Click me">
+    <input id="elem2" type="button" value="Say Thank" >
+    <script>
+        //hendler function
+        elem.onclick = function () {
+            alert('Thank you');
+        };
+
+        //หรือประกาศก่อนค่อยกำหนดค่า function
+        function sayThanks() {
+            alert('Thanks!');
+        }
+
+        elem2.onclick = sayThanks; //กำหนด function ให้กับ propoty ไม่ต้องมีวงเล็บ
+    </script>
+</body>
+
+</html>
