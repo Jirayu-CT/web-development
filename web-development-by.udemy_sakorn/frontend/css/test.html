@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+
+    <style>
+        body{
+            font: 14px sans-serif;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+        span#specific{
+            background: red;
+        }
+        span{
+            background: red;
+        }
+        span{
+            background: yellow;
+        }
+    </style>
+
+
+</head>
+<body>
+    <p>
+        specificity is determined by how specific the selector is.
+        <span id="specific">A specific selector wins</span>
+        over a <span>more general one</span>
+    </p>
+    <p>
+        Order ins't important until there are one or more elements of the same specificity referring to the same elements. In which case,
+        <span style="background: grey;">the last one wins</span>
+    </p>
+</body>
+</html>
