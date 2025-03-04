@@ -1,0 +1,10 @@
+npm create vite@latest
+cd fontend
+  npm install
+  npm run dev
+  npm i axios jwt-decode react-router-dom
+
+
+cd backend
+npm init -y
+npm i express nodemon mongoose cors bcryptjs dotenv jsonwebtoken

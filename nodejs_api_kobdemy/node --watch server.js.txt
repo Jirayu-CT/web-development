@@ -1,0 +1,6 @@
+node --watch server.js
+npm i express --save
+npm i body-parser
+npm i cors
+npm i jsonwebtoken
+npm i dotenv

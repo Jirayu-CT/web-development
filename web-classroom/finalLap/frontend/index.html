@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-white text-2xl font-bold">Logo</a>
+
+            <button id="menu-toggle" class="block md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+
+            <div class="hidden md:flex text-white items-center">
+                <ul id="menu" class="flex">
+                    <li class="hover:bg-gray-700 p-2 rounded">
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="hover:bg-gray-700 p-2 rounded">
+                        <a href="#">About</a>
+                    </li>
+                    <li class="hover:bg-gray-700 p-2 rounded">
+                        <a href="#">Services</a>
+                    </li>
+                    <li class="hover:bg-gray-700 p-2 rounded">
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-4 text-white">
+                <a href="./login.html" class="hover:bg-gray-700 p-2 rounded">Log in</a>
+                <a href="./register.html" class="hover:bg-gray-700 p-2 rounded bg-white text-gray-800 px-4">Sign Up</a>
+            </div>
+        </div>
+
+        <ul id="mobile-menu" class="md:hidden flex flex-col items-center text-center text-white py-4">
+            <li class="hover:bg-gray-700 p-2 rounded w-full">
+                <a href="#" class="block w-full">Home</a>
+            </li>
+            <li class="hover:bg-gray-700 p-2 rounded w-full">
+                <a href="#" class="block w-full">About</a>
+            </li>
+            <li class="hover:bg-gray-700 p-2 rounded w-full">
+                <a href="#" class="block w-full">Services</a>
+            </li>
+            <li class="hover:bg-gray-700 p-2 rounded w-full">
+                <a href="#" class="block w-full">Contact</a>
+            </li>
+            <hr class="w-full border-b border-gray-700">
+            <li class="hover:bg-gray-700 p-2 rounded w-full">
+                <a href="./login.html" class="block w-full hover:bg-gray-700 rounded">Log in</a>
+            </li>
+            <li class="p-2 rounded w-full block">
+                <a href="./register.html" class="block w-full hover:bg-gray-700 p-2 rounded bg-white text-gray-800 px-4">Sign Up</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto p-4">
+        <h1 class="text-3xl font-bold">Welcome to My Website</h1>
+        <p class="mt-4">This is the main content of the page.</p>
+        <p class="mt-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias animi hic fugiat eum iure
+            iusto commodi tempore ipsum, harum dolorem eos voluptatum natus omnis quidem veniam, cum laboriosam voluptas
+            facere.
+        </p>
+        <div id="get-profile">
+            <p>Username: <span id="get-username"></span></p>
+            <p>Password: <span id="get-password"></span></p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 p-4 text-white">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 My Website. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+
+    <script>
+        const fetchProfile = async () => {
+            try {
+                const res = await fetch('http://localhost:3000/api/profile', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include'
+                });
+
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+
+                const data = await res.json();
+                console.log(data);
+
+                document.getElementById('get-username').innerHTML = data.user.username;
+                document.getElementById('get-password').innerHTML = data.user.password;
+
+            } catch (error) {
+                console.error('Error fetch profile:', error);
+                document.getElementById('get-username').innerHTML = 'Error loading username.';
+            }
+        }
+
+        fetchProfile();
+    </script>
+</body>
+
+</html>
