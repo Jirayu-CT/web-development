@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/17833f8b00.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <div id="navbar"></div>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto p-4 flex justify-center items-center">
+        <div class="w-full max-w-md bg-white p-8 rounded shadow-md">
+            <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
+            <form id="loginForm" action="/api/login" method="POST">
+                <div class="mb-4">
+                    <label for="username" class="block text-gray-700">Username</label>
+                    <input type="text" id="username" name="username" class="w-full px-3 py-2 border rounded" required>
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block text-gray-700">Password</label>
+                    <div class="relative flex items-center">
+                        <input type="password" id="password" name="password" class="w-full px-3 py-2 border rounded"
+                            required>
+                        <button id="toggle-password" type="button"
+                            class="absolute right-4 text-gray-600 hover:text-gray-200"
+                            onclick="togglePasswordVisibility('password', 'toggle-password')">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                    <a href="./editPassword.html" class="flex justify-end mr-2 text-gray-600 hover:text-gray-800">Forgot
+                        Password?</a>
+                </div>
+                <div class="flex items-center justify-between">
+                    <button type="submit"
+                        class="w-full bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700">Login</button>
+                </div>
+            </form>
+            <p class="mt-4 text-center">Don't have an account? <a href="./register.html"
+                    class="text-blue-500 hover:text-blue-700">Sign Up</a></p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script>
+        // Load navbar and footer
+        const loadComponents = async () => {
+            const navbar = await fetch('../components/navbar.html').then(res => res.text());
+            document.getElementById('navbar').innerHTML = navbar;
+
+            const footer = await fetch('../components/footer.html').then(res => res.text());
+            document.getElementById('footer').innerHTML = footer;
+
+            // Load scripts after components are loaded
+            const script = document.createElement('script');
+            script.src = '../js/script.js';
+            document.body.appendChild(script);
+
+            const scriptApi = document.createElement('script');
+            scriptApi.src = '../js/login.js';
+            document.body.appendChild(scriptApi);
+        }
+
+        loadComponents();
+    </script>
+</body>
+
+</html>
