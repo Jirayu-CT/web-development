@@ -66,24 +66,20 @@ const login = async (req, res) => {
         const token = jwt.sign(
             payload, 
             SECRET_KEY, 
-            { expiresIn: '1h' }
+            { expiresIn: '2h' }
         );
 
-        // res.cookie('token', token, { 
-        //     httpOnly: true,
-        //     secure: false,
-        //     sameSite: 'none',
-        //     maxAge: 3600000 // 1 hour
-        // });
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: false, // false ช่วงพัฒนา , true ช่วง Production
+            sameSite: 'none', // Start with Lax to test, then Strict in production
+            maxAge: 3600000*2 // ประมาณ 1 ชม.     
+        })
 
-        res.cookie("token", token, {
-            httpOnly: true, // ป้องกัน XSS
-            secure: false, // ใช้เฉพาะ HTTPS
-            sameSite: "none", // ป้องกัน CSRF
-            maxAge: 3600000,
+        res.status(200).send({ 
+            message: 'Login successful',
+            token: token
         });
-
-        res.status(200).send({ message: 'Login successful' });
     }
     catch(err){
         console.log(err)
@@ -94,7 +90,12 @@ const login = async (req, res) => {
 // Logout
 const logout = async (req, res) => {
     try{
-        res.clearCookie('token');
+        res.cookie('token', '', { 
+            maxAge: 0, 
+            httpOnly: true, 
+            secure: false, 
+            sameSite: 'Strict' 
+        });
         res.status(200).send({ message: 'Logout successful' });
     }
     catch(err){

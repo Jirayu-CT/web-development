@@ -7,6 +7,8 @@ require('dotenv').config();
 const authRoutes = require('./routes/authRoutes.js');
 const bookRoutes = require('./routes/bookRoutes.js');
 const userRoutes = require('./routes/userRoutes.js');
+const publisherRoutes = require('./routes/publisherRoutes.js');
+const customerRoutes = require('./routes/customerRoutes.js');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -23,6 +25,8 @@ app.use(cors({
 app.use('/api', authRoutes);
 app.use('/api', bookRoutes);
 app.use('/api', userRoutes);
+app.use('/api', publisherRoutes);
+app.use('/customer', customerRoutes);
 
 // Start server
 app.listen(PORT, () => {

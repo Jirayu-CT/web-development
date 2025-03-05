@@ -1,9 +1,15 @@
 const fetchProfile = async () => {
     try {
+        let token = getCookie('token');
+        if (!token) {
+            window.location.href = './login.html';
+        }
+
         const res = await fetch('http://localhost:3000/api/profile', {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'authorization': token
             },
             credentials: 'include'
         });
@@ -13,15 +19,28 @@ const fetchProfile = async () => {
         }
 
         const data = await res.json();
-        console.log(data);
-
-        document.getElementById('get-username').innerHTML = data.user.username;
-        document.getElementById('get-password').innerHTML = data.user.password;
+        document.getElementById('get-username').innerHTML = data.username;
 
     } catch (error) {
         console.error('Error fetch profile:', error);
         document.getElementById('get-username').innerHTML = 'Error loading username.';
     }
+};
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
 
 fetchProfile();

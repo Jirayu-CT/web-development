@@ -14,7 +14,10 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
         credentials: 'include'
     });
     const data = await response.json();
+
     if (response.ok) {
+        
+        document.cookie = `token=${data.token}`;
         alert('Login successful');
         window.location.href = './index.html';
     } else {

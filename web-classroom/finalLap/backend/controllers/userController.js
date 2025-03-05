@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt');
 const db = require('../config/dbConfig.js');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 //get all users
 const getAllUsers = async (req, res) => {
@@ -21,6 +23,11 @@ const getAllUsers = async (req, res) => {
 // Get Profile
 const getProfile = async (req, res) => {
     try{
+        let token = req.headers['authorization'];
+        if (!token) {
+            return res.status(401).send('Token not provided');
+        }
+        
         const query = 'SELECT * FROM users WHERE id = ?';
         const [ row ] = await db.query(query, [req.user.id]);
 
