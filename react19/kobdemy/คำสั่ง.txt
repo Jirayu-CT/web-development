@@ -1,0 +1,6 @@
+npm create vite@latest my-react-app
+cd my-react-app
+npm i
+npm i axios
+npm i sweetalert2
+npm run dev
