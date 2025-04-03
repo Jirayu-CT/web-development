@@ -1,0 +1,5 @@
+------prisma mySQL------
+mkdir hello-prisma
+cd hello-prisma
+npm init -y
+npm install prisma typescript tsx @types/node --save-dev

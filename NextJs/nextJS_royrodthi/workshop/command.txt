@@ -1,0 +1,26 @@
+npx create-next-app@latest camp
+npm run dev
+npx shadcn@latest init
+npx shadcn@latest add button
+npx shadcn@latest add input
+npm install next-themes
+npx shadcn@latest add dropdown-menu
+npm install @clerk/nextjs
+npx shadcn@latest add sonner
+npx shadcn@latest add label
+npm install prisma --save-dev
+npm install @prisma/client
+npx prisma init
+npx prisma db push
+npx prisma studio
+npx shadcn@latest add select
+npx shadcn@latest add textarea
+npm install react-leaflet@next leaflet
+npm install -D @types/leaflet
+npm install @supabase/supabase-js
+npx shadcn@latest add skeleton
+npm install swiper
+npm i use-debounce
+npx shadcn@latest add breadcrumb
+npx shadcn@latest add popover
+npm install react-share

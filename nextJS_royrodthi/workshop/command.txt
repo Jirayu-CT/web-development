@@ -1,9 +1,0 @@
-npx create-next-app@latest camp
-npm run dev
-npx shadcn@latest init
-npx shadcn@latest add button
-npx shadcn@latest add input
-npm install next-themes
-npx shadcn@latest add dropdown-menu
-npm install @clerk/nextjs
-npx shadcn@latest add toast
