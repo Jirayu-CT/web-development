@@ -20,7 +20,7 @@ exports.register = async(req, res) => {
             }
         })
         if(user){
-            return res.status(200).json({
+            return res.status(400).json({
                 message: 'Email already exist!!!'
             });
         }
@@ -104,8 +104,20 @@ exports.currentUser = async(req, res) => {
     //code
     try{
         //code
-
-        res.end('Current user controller successfully!');
+        const user = await prisma.user.findFirst({
+            where: {
+                email: req.user.email
+            },
+            select: {
+                id: true, 
+                name: true,
+                email: true,
+                role: true,
+            }
+        })
+        res.json({
+            user: user
+        });
     }
     catch(err){
         //error
