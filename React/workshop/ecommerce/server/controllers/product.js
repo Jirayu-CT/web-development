@@ -132,7 +132,7 @@ exports.remove = async (req, res) => {
     try {
         //code
         const { id } = req.params;
-        const product = await prisma.product.delete({
+        await prisma.product.delete({
             where: {
                 id: Number(id)
             }

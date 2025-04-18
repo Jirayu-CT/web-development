@@ -10,10 +10,7 @@ exports.create = async (req, res) => {
                 name: name
             }
         })
-        res.json({
-            message: 'Create category successfully!',
-            data: catagory
-        })
+        res.send(catagory)
     } catch (err) {
         //error
         console.log(err);
@@ -31,10 +28,7 @@ exports.list = async (req, res) => {
         //code
         const category = await prisma.category.findMany()
 
-        res.json({
-            message: 'List category successfully!',
-            data: category
-        });
+        res.send(category);
     } catch (err) {
         //error
         console.log(err);
@@ -56,10 +50,7 @@ exports.remove = async (req, res) => {
             }
         })
 
-        res.json({
-            message: 'Delete category successfully!',
-            data: category
-        });
+        res.send(category);
     } catch (err) {
         //error
         console.log(err);
