@@ -2,6 +2,7 @@ import { toast } from "react-toastify"
 import { createProduct } from "../../api/product"
 import useEcomStore from "../../store/ecom-store"
 import { useEffect, useState } from "react"
+import Uploadfile from "./Uploadfile"
 
 const initialSatate = {
     title: "GeForce RTX 4090 super",
@@ -20,7 +21,7 @@ const FromProduct = () => {
 
     const getProduct = useEcomStore((state) => state.getProduct)
     const products = useEcomStore((state) => state.products)
-    console.log(products)
+    // console.log(products)
 
     const [form, setForm] = useState(initialSatate)
 
@@ -102,6 +103,9 @@ const FromProduct = () => {
                     }
                 </select>
                 <hr />
+                {/* Upload file */}
+                <Uploadfile form={form} setForm={setForm} />
+
                 <button className="bg-blue-500">เพิ่มข้อมูลสินค้า</button>
 
                 <hr />
@@ -122,9 +126,8 @@ const FromProduct = () => {
                     <tbody className="bg-white divide-y divide-gray-300">
                         {
                             products.map((item, index) => {
-                                console.log(item)
                                 return (
-                                    <tr>
+                                    <tr key={index}>
                                         <th scope="row">{index+1}</th>
                                         <td>{ item.title }</td>
                                         <td>{ item.description }</td>

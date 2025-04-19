@@ -1,4 +1,5 @@
 const prisma = require("../config/prisma");
+const cloudinary = require('cloudinary').v2;
 
 exports.create = async (req, res) => {
     //code
@@ -281,6 +282,55 @@ exports.searchFilters = async (req, res) => {
         // })
     } catch (err) {
         //error
+        console.log(err);
+        res.status(500).json({
+            message: 'Internal server error'
+        });
+    }
+}
+
+
+
+
+// Configuration
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+
+exports.createImages = async (req, res) => {
+    //code
+    try {
+        // console.log(req.body);
+        const result = await cloudinary.uploader.upload(req.body.image, {
+            public_id: `Jiryau-${Date.now()}`,
+            resource_type: 'auto',
+            folder: 'React-Ecom2024-byRoitai'
+        })
+        res.send(result);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            message: 'Internal server error'
+        });
+    }
+}
+
+exports.removeImage = async (req, res) => {
+    //code
+    try {
+        const { public_id } = req.body;
+        // console.log(public_id);
+
+        cloudinary.uploader.destroy(public_id, (result) => {
+            res.send('Delete image successfully!');
+        })
+
+    }
+    catch (err) {
         console.log(err);
         res.status(500).json({
             message: 'Internal server error'

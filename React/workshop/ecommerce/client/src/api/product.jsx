@@ -18,3 +18,28 @@ export const listProduct = async (token, count = 20) => {
         }
     })
 }
+
+export const uploadFiles = async (token, from) => {
+    //code body
+    // console.log('uploadFiles', from)
+    return axios.post('http://localhost:3000/api/images', {
+        image: from
+    }, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        }
+    })
+}
+
+
+export const removeFile = async (token, public_id) => {
+    //code body
+    // console.log('uploadFiles', from)
+    return axios.post('http://localhost:3000/api/removeimage', {
+        public_id
+    }, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        }
+    })
+}
